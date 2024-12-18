@@ -1,63 +1,45 @@
 # SimpleLevelGenerator
-
-
-
-
->Ideas:
->Implement Editor utility widget menu (research editor utility widgets)
->Override PostEditChangeProperty to update values changed in the details panel.
->(https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Components/UActorComponent/PostEditChangeProperty)
-
-> Linear or Maze mode
--- Maze mode is the traditional dungeon layout.
--- Linear mode is a version of this dungeon generator that lays out the dungeon in a straight path.
----- Linear mode enables Split mode option that branches dungeon generation, potentially has a value for amount of branches and length of the path.
----- Split mode enables Connect mode option that connects the branches back up at a certain point.
-
-> Extend enemy spawn complexity by incorperating a data table or struct for enemy spawn chance, stats, and multipliers.
-3D mode fills prefabs and rooms upwards to make new floors. 
---- 3D mode enables Flat mode option that can be disabled to mush floors together to create a anthill-like structure.
-
-> Add Room Sleeping/Waking to improve performance
-
+---
 ## How to Use:
 This asset is designed to be expanded upon on a project to project basis for specific uses.
+This asset generates its own rooms; however, this asset can incorperate premade room assets*.
 
-#### Installation
-- Find SimpleLevelGenerator on [fab.com](fab.com), click "Add To Library"
-- Download the [Epic Games Launcher](https://store.epicgames.com/en-US/)
-- Open Epic Games Launcher > Unreal Engine > Library
-- Look for SimpleDungeonGenerator under Fab Assets
-- Click "Add To Project"
+#### &nbsp; Setup 
+- Find SimpleLevelGenerator on fab.com
+- Add it to an Unreal Project
 
-#### Setup 
-- This asset generates its own rooms; however, this asset can incorperate premade room assets*.
-- Navigate to "Tools" inside of the Unreal Engine Editor
-- Select "SimpleLevelGenerator Manager"
-
-#### Configuration
+#### &nbsp; Configuration
 - Create a new Blueprint from AGameLevel
 - Configure values in the details panel
 - Optional: Add premade room data to the RoomData array to generate custom rooms*
+- Note: Entities do not spawn if no Entity data is provided.
 
-#### Lastly
-- Add the new Blueprint to the scene.
+#### &nbsp; Lastly
+- Add the new Blueprint to the scene
 
-#### *Customization
+#### &nbsp; *Customization
 - __Custom Rooms__: create new instances of URoomDataAsset
-and add them to the RoomData in AGameLevel
+and add them to the RoomData in AGameLevel.
 
 - __Custom Entities__: create new instances of UEntityDataAsset,
 initialize variables of each instance. Add references to the
-entity assets to the EntityData array in each ARoom blueprint
+entity assets to the EntityData array in each ARoom blueprint.
 
 - __Room and Entity functionality expansion__: add new variables to 
 URoomDataAsset and UEntityDataAsset to expand data needed for generating
 new Rooms/Entities. To edit functionality, alter the C++ classes directly, 
 or add functionality to a blueprint created from either class.
 
-
 ## Classes:
+
+![SimpleLevelGeneratorUML](SimpleLevelGenerator_UML_Original.png)
+
+####  &nbsp; &nbsp; &nbsp; Table of Contents
+- [UEntityDataAsset](#class-uentitydataasset-udataasset)
+- [URoomDataAsset](#class-uroomdataasset-udataasset)
+- [ARoom](#class-aroom-aactor)
+- [AGameLevel](#class-agamelevel-aactor)
+
 
 
 #### class UEntityDataAsset : UDataAsset 
