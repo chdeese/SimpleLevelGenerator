@@ -4,14 +4,14 @@
 This asset is designed to be expanded upon on a project to project basis for specific uses.
 This asset generates its own rooms; however, this asset can incorperate premade room assets*.
 
-#### &nbsp; Setup 
+#### &nbsp; Getting Started 
 - Find SimpleLevelGenerator on fab.com
 - Add it to an Unreal Project
 
-#### &nbsp; Configuration
+#### &nbsp; Setup
 - Create a new Blueprint from AGameLevel
 - Configure values in the details panel
-- Optional: Add premade room data to the RoomData array to generate custom rooms*
+- Optional: Add custom data to spawn custom rooms*
 - Note: Entities do not spawn if no Entity data is provided.
 
 #### &nbsp; Lastly
@@ -19,16 +19,37 @@ This asset generates its own rooms; however, this asset can incorperate premade 
 
 #### &nbsp; *Customization
 - __Custom Rooms__: create new instances of URoomDataAsset
-and add them to the RoomData in AGameLevel.
+and add them to the RoomData in the AGameLevel Blueprint.
+Important Note: Custom Room Meshes require placed door and spawner sockets. (*Refer to Sockets*)
 
 - __Custom Entities__: create new instances of UEntityDataAsset,
 initialize variables of each instance. Add references to the
 entity assets to the EntityData array in each ARoom blueprint.
 
+- __Custom Passageways__: create instance(s) of UPassagewayDataAsset,
+initialize variables of each instance. Add reference(s) to PassagewayData in the AGameLevel Blueprint.
+
+- __Custom Spawn Room__: create instance(s) of URoomDataAsset,
+initialize RoomAsset variable with a premade Spawn Room.
+Note: This assumes the Spawn Room has a Player Start Location already placed.
+
+- __Custom Entry Points__: construct a new AGameLevel using it's overloaded TVector constructor.
+Important Note: will place a room from BeginningRooms if entry socket is provided. (*Refer to Sockets*)
+
 - __Room and Entity functionality expansion__: add new variables to 
 URoomDataAsset and UEntityDataAsset to expand data needed for generating
 new Rooms/Entities. To edit functionality, alter the C++ classes directly, 
 or add functionality to a blueprint created from either class.
+
+## Sockets:
+All Custom Rooms used by SimpleLevelGenerator must have custom sockets attached to its mesh indicating doorways and spawn locations.
+**Beginning Rooms require an entry socket to represent the position to align the open entrance doorway.**
+__Socket Naming Conventions__
+Note: Case Sensitive
+- *Spawners*: include "spawnersocket" anywhere in the name of the socket.
+- *Doorways*: include "doorwaysocket" anywhere in the name of the socket.
+- *Entry*: include "entrysocket" anywhere in the name of the socket.
+
 
 ## Classes:
 
@@ -91,6 +112,9 @@ or add functionality to a blueprint created from either class.
 | TArray<AActor> OwnedActiveEntities | An array of each active entity this room has spawned. |
 | TArray<UEntityDataAsset> EntityData | Stores data for entities to be spawned. |
 | bool bGenerated | True if this room was not created from an asset. |
+| float LastSpawnSecondsElapsed | The amount of seconds since the last spawn has occured. |
+| TArray<TVector> SpawnerLocations | Spawner location data gathered from mesh sockets. (*Refer to Sockets*) |
+| TArray<TVector> DoorLocations | Doorway location data gathered from mesh sockets. (*Refer to Sockets*) |
 | bool bRepeatSpawns | Enables reoccuring entity spawns. |
 | float SpawnCooldownSeconds | Prevents new entities from spawning for a specified duration. |
 
