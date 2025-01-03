@@ -45,7 +45,7 @@ or add functionality to a blueprint created from either class.
 ## Sockets:
 All Custom Rooms used by SimpleLevelGenerator must have custom sockets attached to its mesh indicating doorways and spawn locations.
 **Beginning Rooms require an entry socket to represent the position to align the open entrance doorway.**
-#__Socket Naming Conventions__
+### __Socket Naming Conventions__
 Note: Case Sensitive
 - *Spawners*: include "spawnersocket" anywhere in the name of the socket.
 - *Doorways*: include "doorwaysocket" anywhere in the name of the socket.
