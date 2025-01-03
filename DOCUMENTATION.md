@@ -12,10 +12,11 @@ This asset generates its own rooms; however, this asset can incorperate premade 
 - Create a new Blueprint from AGameLevel
 - Configure values in the details panel
 - Optional: Add custom data to spawn custom rooms*
-- Note: Entities do not spawn if no Entity data is provided.
+Note: Entities do not spawn if no Entity data is provided.
 
 #### &nbsp; Lastly
 - Add the new Blueprint to the scene
+Note: spawns game level at runtime if `boolean` is true.
 
 #### &nbsp; *Customization
 - __Custom Rooms__: create new instances of URoomDataAsset
@@ -44,7 +45,7 @@ or add functionality to a blueprint created from either class.
 ## Sockets:
 All Custom Rooms used by SimpleLevelGenerator must have custom sockets attached to its mesh indicating doorways and spawn locations.
 **Beginning Rooms require an entry socket to represent the position to align the open entrance doorway.**
-__Socket Naming Conventions__
+#__Socket Naming Conventions__
 Note: Case Sensitive
 - *Spawners*: include "spawnersocket" anywhere in the name of the socket.
 - *Doorways*: include "doorwaysocket" anywhere in the name of the socket.
