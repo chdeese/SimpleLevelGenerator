@@ -56,7 +56,7 @@ Note: Case Sensitive
 
 ## Classes:
 
-![SimpleLevelGeneratorUML](SimpleLevelGenerator_UML_Original.png)
+![SimpleLevelGeneratorUML](SimpleLevelGenerator_UML_Updated.png)
 
 ####  &nbsp; &nbsp; &nbsp; Table of Contents
 - [UEntityDataAsset](#class-uentitydataasset-udataasset)
