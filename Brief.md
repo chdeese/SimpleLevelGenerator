@@ -12,7 +12,7 @@ SimpleLevelGenerator's only dependency is [UnrealEngine 5](https://www.unrealeng
 
 ### How it works
 
-The level area is divided into squares (or cubes).
+The level area is divided into chunks (or cubes). Rooms are placed within the area and chunks are reserved. Extra Rooms are generated if desired, then Passageways create a maze and connect each room.
 
 ### Implementation
 
